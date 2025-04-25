@@ -17,7 +17,7 @@ function App() {
       setError('');
       setCrimes([]);
 
-      // Step 1: Fetch latitude and longitude from Postcodes.io
+      // Fetch latitude and longitude from Postcodes.io
       const response = await fetch(`https://api.postcodes.io/postcodes/${postcode.replace(/\s+/g, '')}`);
       const data = await response.json();
 
@@ -33,14 +33,14 @@ function App() {
         return;
       }
 
-      // Step 2: Build the Police API URL
+      // Build the Police API URL
       let crimesUrl = `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}`;
 
       if (selectedYear && selectedMonth) {
         crimesUrl += `&date=${selectedYear}-${selectedMonth}`;
       }
 
-      // Step 3: Fetch crimes
+      // Fetch crimes
       const crimesResponse = await fetch(crimesUrl);
       const crimesData = await crimesResponse.json();
 

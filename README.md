@@ -27,4 +27,4 @@ This is a Rich Web Application built using React. It allows users to search for 
 npm install
 npm run dev
 
-# navigate to http://localhost:5173 in your browser.
+navigate to http://localhost:5173 in your browser.

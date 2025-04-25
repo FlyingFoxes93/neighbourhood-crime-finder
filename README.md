@@ -4,7 +4,7 @@ This is a Rich Web Application built using React. It allows users to search for 
 
 ## Features
 - Input any valid UK postcode.
-- Optional selection of year and month for historical searches.
+- Optional selection of year and month for historical searches (2022 onwards).
 - Displays up to 20 nearby crimes including:
   - Crime category
   - Street location

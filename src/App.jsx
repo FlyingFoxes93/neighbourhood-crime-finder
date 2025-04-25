@@ -17,7 +17,7 @@ function App() {
       setError('');
       setCrimes([]);
 
-      // Step 1: Fetch latitude and longitude from Postcodes.io
+      // Fetch latitude and longitude from Postcodes.io
       const response = await fetch(`https://api.postcodes.io/postcodes/${postcode.replace(/\s+/g, '')}`);
       const data = await response.json();
 
@@ -33,15 +33,25 @@ function App() {
         return;
       }
 
-      // Step 2: Build the Police API URL
+      // Build the Police API URL
       let crimesUrl = `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}`;
 
       if (selectedYear && selectedMonth) {
         crimesUrl += `&date=${selectedYear}-${selectedMonth}`;
       }
 
-      // Step 3: Fetch crimes
+      // Fetch crimes
       const crimesResponse = await fetch(crimesUrl);
+
+      if (!crimesResponse.ok) {
+        if (crimesResponse.status === 404) {
+          setCrimes([]);
+          return;
+        } else {
+          throw new Error(`API returned status ${crimesResponse.status}`);
+        }
+      }
+
       const crimesData = await crimesResponse.json();
 
       if (Array.isArray(crimesData)) {
@@ -74,9 +84,9 @@ function App() {
           style={{ padding: '8px', marginRight: '8px' }}
         >
           <option value="">Select Year (optional)</option>
-          {Array.from({ length: new Date().getFullYear() - 2010 + 1 }, (_, i) => 2010 + i).map(year => (
-            <option key={year} value={year}>{year}</option>
-          ))}
+          {Array.from({ length: new Date().getFullYear() - 2022 + 1 }, (_, i) => 2022 + i).map(year => (
+  <option key={year} value={year}>{year}</option>
+))}
         </select>
 
         <select

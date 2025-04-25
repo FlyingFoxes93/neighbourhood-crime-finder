@@ -21,10 +21,9 @@ This is a Rich Web Application built using React. It allows users to search for 
 2. The app uses Postcodes.io to find the location.
 3. The app queries the Police API, optionally filtering by selected month/year.
 4. Results are displayed dynamically.
+5. Local results can be seen by navigating to http://localhost:5173 in your browser.
 
 ## Installation
 ```bash
 npm install
 npm run dev
-
-navigate to http://localhost:5173 in your browser.
